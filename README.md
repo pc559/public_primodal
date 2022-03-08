@@ -1,6 +1,6 @@
 To compile the Cython functions:
 
-python3 setup_quad_sum.py build_ext --inplace
+python3 setup_quad_sum.py build_ext --inplace \
 python3 setup_deriv.py build_ext --inplace
 
 To run Primodal:
