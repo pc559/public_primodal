@@ -38,28 +38,15 @@ sys.stdout.flush()
 bkgd_labels = 't, tau_s, phi, dphi, H, V, dV, c_s, eps_s, eta'
 np.savetxt('res_bkgd_'+config.label+'.dat',bkgd_arrays[:,::10].T,delimiter=',',header=bkgd_labels,comments='')
 ####################################################################
-## Correlate with Adshead template, if appropriate.
-if 'malda' in config.label and 'tanh' in config.label:
-    if config.bkgd_label=='malda':
-        V_unpert,V_1_unpert,V_11_unpert = potential_def_arg.quadratic_potential_funcs(config.m)
-    elif config.bkgd_label=='staro':
-        V_unpert,V_1_unpert,V_11_unpert = potential_def_arg.starobinsky_pot_funcs(config.lamb,config.Mpl)
-    #ads_ps, ads_bs = ads.gen_ads_template_from_bkgd(bkgd_interps,config.k_min,config.k_max,config.c,config.d,config.phi_f,V_unpert,V_1_unpert,V_11_unpert)
-    #np.save("ads_ps.npy",ads_ps)
-    #np.save("ads_bs.npy",ads_bs)
-####################################################################
 ## Get zk arrays.
 t3 = time()
-###############################
 kbars,lg_ws = leggauss(config.Nk)
 t_zs,t_list = evolution_funcs.get_t_zs()
 ks = np.zeros(config.Nk)
 ###############################
+## Get time evolution of the mode functions.
 print('# Starting evolution', flush=True)
 ks,zs,dzs = evolution_funcs.get_zks(kbars,t_zs,t_list,bkgd_interps,As,Bs,bkgd_arrays[0])
-'''split = config.Nk//2
-ks[:split],zs[:,:split],dzs[:,:split] = evolution_funcs.get_zks(kbars[:split],t_zs,t_list,bkgd_interps)
-ks[split:],zs[:,split:],dzs[:,split:] = evolution_funcs.get_zks(kbars[split:],t_zs,t_list,bkgd_interps)'''
 print('# Memory of ks,lg_ws,t_zs,zs,dzs:',ks.nbytes*1e-9,lg_ws.nbytes*1e-9,t_zs.nbytes*1e-9,zs.nbytes*1e-9,dzs.nbytes*1e-9)
 t4 = time()
 print('# Time modes:',t4-t3)
@@ -107,7 +94,7 @@ t6 = time()
 print('# Time decomp:',t6-t5)
 #np.savetxt('res_fit_check_'+config.label+'_l'+str(l_max)+'.dat',fit_checks,delimiter=',',comments='')
 ####################################################################
-## Integrate a_pqr's
+## Integrate to get a_pqr's
 t7 = time()
 coeffs, basis_funcs_padded, integrands_to_print, to_print_labels, raw_coeffs = construct_and_integrate(t_zs,I_coeffs_final,J_coeffs_final,bkgd_interps,basis_funcs,l_max, final_basis)
 #np.savetxt('res_integrand_check_'+config.label+'_l'+str(l_max)+'.dat',integrands_to_print,delimiter=',',header=to_print_labels,comments='')

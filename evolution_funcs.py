@@ -1,7 +1,7 @@
 '''
 Evolve and save the background quantities and mode functions.
 This part does not use any of the new Primodal methods, and is not
-written in a particularly robust way---I would recommend getting the
+written in a particularly efficient way---I would recommend getting the
 time evolution of your mode functions elsewhere and plugging that
 into the Primodal bispectrum code.
 '''
