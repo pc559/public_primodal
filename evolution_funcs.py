@@ -1,9 +1,10 @@
 '''
 Evolve and save the background quantities and mode functions.
-This part does not use any of the new Primodal methods, and is not
-written in a particularly efficient way---I would recommend getting the
-time evolution of your mode functions elsewhere and plugging that
-into the Primodal bispectrum code.
+This part does not use any of the new Primodal methods---while
+it is functional, it needs a major rewrite.
+An option would be simply getting the
+time evolution of the mode functions elsewhere and plugging them
+into the Primodal k-decomposition and time-integration code.
 '''
 
 try:

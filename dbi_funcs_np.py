@@ -184,6 +184,4 @@ def ps_approx(lambda_dbi, V0, phi_0):
 
 def ns_approx(lambda_dbi, V0, phi_0, c_s):
     return np.sqrt(3/(lambda_dbi*V0))*phi_0**2*(-4./phi_0-2.*(phi_0**2/c_s)*(np.sqrt(3/(lambda_dbi*V0))))
-    ## # So, Ps*ns^4 = 1/lambda defines lambda.
-    ## # Then, choose phi_0 and V0 to get ns, Ps will then work too.
 
