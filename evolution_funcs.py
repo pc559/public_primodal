@@ -1,7 +1,7 @@
 '''
 Evolve and save the background quantities and mode functions.
 This part does not use any of the new Primodal methods---while
-it is functional, it needs a major rewrite.
+it is functional, it needs a rewrite.
 An option would be simply getting the
 time evolution of the mode functions elsewhere and plugging them
 into the Primodal k-decomposition and time-integration code.

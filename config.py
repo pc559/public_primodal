@@ -259,13 +259,14 @@ early_del_t = 10*dt_pref*np.exp(N_start_integ*0+2-0.0)
 late_del_t  = 5e-4
 early_del_t = min(early_del_t,late_del_t*10)
 late_t_switch = np.log(np.sqrt(k_min*k_max*c_s_0**2)/H_0)#+1+1
-## # E-folds deltas at which to start the mode evolution,
+## # E-fold deltas at which to start the mode evolution,
 ## # and when to switch variables.
-## # The evolution of the mode functions is not implemented
-## # in a particularly efficient way in these scripts,
-## # but you can use some other code to evolve the mode functions,
-## # then just connect them up to the Primodal code to get
-## # the bispectrum calculation.
+## # The evolution of the mode functions does not use
+## # any of the new Primodal methods---while
+## # it is functional, it needs a rewrite.
+## # An option would be simply getting the
+## # time evolution of the mode functions elsewhere and plugging them
+## # into the Primodal k-decomposition and time-integration code.
 ## # Default is 8, set to 8.5 for better DBI at low c_s
 ## # i.e. beta_dbi_IR = 2.9e-1*2.
 delta_early = 8.+0.5
