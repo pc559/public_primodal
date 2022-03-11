@@ -60,7 +60,6 @@ def bkgd_coeff_planck_eft(N,H,eps,eta,c_s,eps_s,s,phi):
 
 def eft_fnl_eql(c_s,c3):
     u = 1.-1./c_s**2
-    ## # Planck typo? #return -u*(-0.275-0.0780*c_s**2-(2./3)*0.780*c3)
     return -u*(-0.275-0.0780*c_s**2-(2./3)*0.0780*c3)
 
 def eft_fnl_ort(c_s,c3):
